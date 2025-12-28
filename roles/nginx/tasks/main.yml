@@ -1,0 +1,20 @@
+- name: Install Nginx
+  yum:
+    name: nginx
+    state: present
+
+- name: Start and enable Nginx
+  service:
+    name: nginx
+    state: started
+    enabled: true
+
+- name: Allow outbound connections for Nginx
+  command: setsebool -P httpd_can_network_connect on
+  changed_when: false
+
+- name: Deploy Nginx configuration
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+  notify: Restart Nginx
