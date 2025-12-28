@@ -1,0 +1,9 @@
+# Force Ansible YAML files to be counted as YAML
+*.yml linguist-language=YAML
+*.yaml linguist-language=YAML
+
+# Treat Jinja templates as YAML (Ansible context)
+*.j2 linguist-language=YAML
+
+# Exclude diagrams from language stats
+diagrams/* linguist-documentation
