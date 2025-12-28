@@ -1,0 +1,40 @@
+- name: Install EPEL and Remi repos
+  yum:
+    name:
+      - epel-release
+      - https://rpms.remirepo.net/enterprise/remi-release-9.rpm
+    state: present
+    disable_gpg_check: true
+
+- name: Enable PHP 8.2 module
+  command: dnf module enable php:remi-8.2 -y
+  args:
+    creates: /etc/dnf/modules.d/php.module
+
+- name: Install PHP packages
+  yum:
+    name:
+      - php
+      - php-fpm
+      - php-mysqlnd
+      - php-cli
+      - php-gd
+      - php-curl
+      - php-mbstring
+      - php-xml
+      - php-zip
+    state: present
+
+- name: Start and enable PHP-FPM
+  service:
+    name: php-fpm
+    state: started
+    enabled: true
+
+- name: Configure PHP-FPM user
+  lineinfile:
+    path: /etc/php-fpm.d/www.conf
+    regexp: '^user ='
+    line: 'user = nginx'
+  notify: Restart PHP-FPM
+
