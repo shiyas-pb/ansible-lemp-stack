@@ -46,7 +46,7 @@ Required for PHP 8:
 dnf install -y epel-release
 dnf install -y https://rpms.remirepo.net/enterprise/remi-release-9.rpm
 
-Packages Installed by Playbook
+## Packages Installed by Playbook
 
 Web Server: nginx
 
@@ -80,7 +80,8 @@ This playbook sets it to permissive and applies required booleans for web applic
 
 Production Note: Use custom SELinux policies instead of permissive mode
 
-Repository Structure
+## Repository Structure:
+
 ansible-lemp-stack/
 ├── inventory
 ├── playbook.yml
@@ -103,9 +104,13 @@ ansible-lemp-stack/
 │   └── php/
 │       ├── tasks/main.yml
 │       └── handlers/main.yml
+├── diagrams/
+│   └── ansible-lemp-flow.png
 └── README.md
 
-Execution Flow
+
+
+## Execution Flow
 
 The playbook configures the server in the following logical order:
 
@@ -151,7 +156,7 @@ Idempotent: safe to re-run multiple times
 
 Automatically installs and configures all services
 
-Validation & Testing
+## Validation & Testing
 
 Check services:
 
@@ -167,10 +172,16 @@ Open in browser:
 
 http://server_ip/info.php
 
-Use Cases
+##Use Cases
 
 Automated provisioning of fresh Linux servers
 
 Standardized LEMP environments
 
 Base platform for WordPress or PHP applications
+
+## 📊 Project Flow Diagram
+
+The following diagram shows the execution flow of the Ansible-based LEMP stack automation:
+
+![Ansible LEMP Flow Diagram](diagrams/ansible-lemp-flow.png)
