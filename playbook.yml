@@ -1,0 +1,11 @@
+- name: Configure LEMP Stack Server
+  hosts: webserver
+  become: true
+
+  roles:
+    - common
+    - selinux
+    - firewall
+    - nginx
+    - mariadb
+    - php
