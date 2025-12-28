@@ -1,0 +1,13 @@
+- name: Update all packages
+  yum:
+    name: "*"
+    state: latest
+
+- name: Install common utilities
+  yum:
+    name:
+      - vim
+      - curl
+      - wget
+      - unzip
+    state: present
