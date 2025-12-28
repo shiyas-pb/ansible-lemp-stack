@@ -81,7 +81,7 @@ This playbook sets it to permissive and applies required booleans for web applic
 Production Note: Use custom SELinux policies instead of permissive mode
 
 ## Repository Structure:
-
+```bash
 ansible-lemp-stack/
 ├── inventory
 ├── playbook.yml
@@ -107,7 +107,7 @@ ansible-lemp-stack/
 ├── diagrams/
 │   └── ansible-lemp-flow.png
 └── README.md
-
+```
 
 
 ## Execution Flow
