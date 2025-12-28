@@ -26,7 +26,7 @@ Install Ansible and Python runtime:
 
 ```bash
 dnf install -y ansible-core python3 python3-libselinux
-
+```
 Reason:
 
 Ansible modules run via Python
@@ -42,10 +42,10 @@ SSH access to the target server (for remote execution)
 Package Repositories
 
 Required for PHP 8:
-
+```bash
 dnf install -y epel-release
 dnf install -y https://rpms.remirepo.net/enterprise/remi-release-9.rpm
-
+```
 ## Packages Installed by Playbook
 
 Web Server: nginx
@@ -149,8 +149,9 @@ mariadb_root_password: StrongRootPass@123
 Security Note: Sensitive values should be encrypted using Ansible Vault in production environments.
 
 Running the Playbook
+```bash
 ansible-playbook -i inventory playbook.yml
-
+```
 
 Idempotent: safe to re-run multiple times
 
@@ -159,19 +160,19 @@ Automatically installs and configures all services
 ## Validation & Testing
 
 Check services:
-
+```bash
 systemctl status nginx mariadb php-fpm firewalld
-
+```
 
 PHP test:
-
+```bash
 echo "<?php phpinfo(); ?>" | sudo tee /usr/share/nginx/html/info.php
-
+```
 
 Open in browser:
-
+```bash
 http://server_ip/info.php
-
+```
 ##Use Cases
 
 Automated provisioning of fresh Linux servers
